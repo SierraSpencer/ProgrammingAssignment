@@ -1,0 +1,35 @@
+# part 1
+id = input("Enter ID: ") #asks for id
+unlock = id[-5:] + "1" #sequence for unlock
+lock = id[-5:] + "4" #sequence for lock
+
+user_input = input("Enter a string of numbers: ")
+
+#checks if locks or unlocks
+if unlock in user_input:
+    print("Unlocked")
+elif lock in user_input:
+    print("Locked")
+else:
+    print("Invalid code")
+
+
+# part 2
+import random
+
+def break():
+    num_symbols = 0
+    while True:
+        num_symbols += 1
+        user_input = str(random.randint(0,9)) #random number generater for unlock
+        if unlock in user_input:
+            return num_symbols
+
+results = []
+for i in range(10):
+    results.append(break())
+
+#prints results
+print("Minimum:", min(results))
+print("Maximum:", max(results))
+print("Average:", sum(results)/len(results))
